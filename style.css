@@ -1,0 +1,290 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 300vh;
+}
+
+@font-face {
+    font-family: 'Poppins-Bold';
+    src: url('fonts/poppins/Poppins-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins-Light';
+    src: url('fonts/poppins/Poppins-Light.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins-Medium';
+    src: url('fonts/poppins/Poppins-Medium.ttf');
+}
+
+:root {
+    --amarelo: #FED049;
+    --branco: #fff;
+    --marrom-escuro: #422311;
+    --preto:  #1F110B;
+}
+
+header {
+    width: 100%;
+    height: 75px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container-grid {
+    width: 90%;
+    height: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .container-grid img {
+    width: 140px;
+
+    border-radius: 10px;
+}
+
+nav {
+    width: 450px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul li {
+    font-size: 20px;
+    list-style-type: none;
+    color: var(--branco);
+
+    cursor: pointer;
+    font-family: 'Poppins-Medium';
+}
+
+nav ul li:hover {
+    color: var(--amarelo);
+}
+
+/* Seção banner */
+.banner {
+    position: relative;
+    width: 100%;
+    height: 667px; /* altura fixa do banner */
+    overflow: hidden;
+}
+
+/* Container do carrossel */
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-out;
+    width: 100%;
+    height: 100%;
+}
+
+/* Slides */
+.slide {
+    width: 100%;
+    height: 667px; /* mesma altura do banner */
+    flex-shrink: 0;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+}
+
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--branco);
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    z-index: 10;
+}
+
+
+/* Animação de "digitação" */
+.banner-text h1 {
+    display: inline-block;
+    overflow: hidden;
+    border-right: 0.8em solid var(--amarelo);
+    white-space: nowrap;
+    letter-spacing: .05em;
+    animation: typing 4s steps(25, end), blinkCaret .8s step-end infinite;
+
+    font-family: "Poppins-Bold";
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blinkCaret {
+    50% { border-color: transparent }
+}
+
+
+/* Indicadores (os quadradinhos) */
+.indicators {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+}
+
+.dot {
+    width: 20px;
+    height: 20px;
+    background: #bbb;
+    cursor: pointer;
+
+}
+
+.dot:hover {
+    background-color: var(--amarelo);
+}
+
+
+#byte-box-sobre {
+    width: 100%;
+    height: 700px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--marrom-escuro);
+}
+
+#byte-box-sobre .container-grid {
+    width: 95%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.blur img {
+    width: 50px;
+}
+
+#esquerda h2 {
+    font-size: 70px;
+    font-family: 'Poppins-Bold';
+
+    color: var(--branco);
+
+    margin-bottom: 20px ;
+}
+
+#esquerda h2 img {
+    width: 70px;
+
+    margin-top: 10px;
+}
+
+#esquerda p {
+    color: var(--branco);
+    font-family: 'Poppins-Light';
+    font-size: 18px;
+    line-height: 1.5em;
+    margin-right: 30px;
+
+    text-align: justify;
+}
+
+span {
+    color: var(--amarelo);
+    font-family: poppins-bold;
+}
+
+#byte-box-sobre-imagem {
+    width: 750px;
+    height: 510px;
+
+    position: relative;
+}
+
+#imagem-sobre {
+    width: 750px;
+    height: 510px;
+
+    border-radius: 20px;
+}
+
+.partiuByteBox{
+    width: 175px;
+    height: 45px;
+
+    border: none;
+    border-radius: 30px;
+
+    background-color: var(--amarelo);
+
+    color: var(--preto);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: 60px;
+    right: -30px;
+}
+
+.partiuByteBox p {
+    font-size: 18px;
+    color: var(--preto);
+
+    font-family: "Poppins-Medium";
+}
+
+.blur {
+    width: 150px;
+    height: 150px;
+
+    background-color: var(--preto);
+    background: rgba(0.2, 0.2, 0.2, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    position: absolute;
+
+    border: none;
+    border-radius: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    bottom: 0;
+}
+
+.blur img {
+    width: 120px;
+}
