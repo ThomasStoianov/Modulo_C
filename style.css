@@ -32,7 +32,7 @@ body {
 
 header {
     width: 100%;
-    height: 75px;
+    height: 70px;
 
     display: flex;
     justify-content: center;
@@ -84,7 +84,7 @@ nav ul li:hover {
 }
 
 /* Seção banner */
-.banner {
+#banner {
     position: relative;
     width: 100%;
     height: 667px; /* altura fixa do banner */
@@ -92,7 +92,7 @@ nav ul li:hover {
 }
 
 /* Container do carrossel */
-.carousel {
+#carousel {
     display: flex;
     transition: transform 0.5s ease-out;
     width: 100%;
@@ -113,41 +113,45 @@ nav ul li:hover {
 
 .banner-text {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 50%; /* coloca a borda superior do banner-text a 50% da altura do banner*/
+    left: 50%; /* coloca a borda esquerda do banner-text a 50% da largura do banner */
+    transform: translate(-50%, -50%); /* move o banner-text para a esquerda em 50% da largura e para cima em 50% da sua prórpria altura*/
     color: var(--branco);
     font-size: 40px;
-    font-weight: bold;
     text-align: center;
-    z-index: 10;
 }
-
 
 /* Animação de "digitação" */
 .banner-text h1 {
-    display: inline-block;
-    overflow: hidden;
-    border-right: 0.8em solid var(--amarelo);
-    white-space: nowrap;
-    letter-spacing: .05em;
-    animation: typing 4s steps(25, end), blinkCaret .8s step-end infinite;
+    display: inline-block; /*Permite animar a largura*/
+    overflow: hidden; /*esconde tudo que ultrapassar a largura do titulo*/
+    border-right: 0.8em solid var(--amarelo); /*cria uma borda na direita do titulo*/
+    white-space: nowrap;/*evita quebra de linha*/
+    animation: typingTitle  10s steps(19, end), blinkCaret .8s step-end infinite alternate;
+    /*
+        steps(25,end), a animação avança em 25 passos, cada letra surge de uma vez
+        end, garante que cada letra surja no final de cada passo
 
+        .8s é a duração do piscar, step-end faz a mudança de cor ser instant~ena no final do passo
+        infinite, repete para sempre
+    */
     font-family: "Poppins-Bold";
 }
 
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
+/*começa com nenhuma letra visível e termina com o titulo completo visivel*/
+@keyframes typingTitle {
+    0%   { width: 0 }        /* começa invisível */
+    40%  { width: 100% }     /* digita até o final */
+    60%  { width: 100% }     /* pausa com o texto completo */
+    100% { width: 0 }        /* apaga até sumir */
 }
 
+/*no meio do ciclo a cor desaparece*/
 @keyframes blinkCaret {
     50% { border-color: transparent }
 }
 
-
-/* Indicadores (os quadradinhos) */
-.indicators {
+.dots {
     position: absolute;
     bottom: 15px;
     left: 50%;
@@ -161,7 +165,6 @@ nav ul li:hover {
     height: 20px;
     background: #bbb;
     cursor: pointer;
-
 }
 
 .dot:hover {
@@ -267,10 +270,8 @@ span {
     width: 150px;
     height: 150px;
 
-    background-color: var(--preto);
-    background: rgba(0.2, 0.2, 0.2, 0.2);
+    background: rgba(0, 0, 0, 0);
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
 
     position: absolute;
 
@@ -287,4 +288,47 @@ span {
 
 .blur img {
     width: 120px;
+}
+
+#galeria {
+    width: 100%;
+    height: 500px;
+
+    background-color: var(--preto);
+
+    padding: 10px;
+}
+
+#galeria .container-grid {
+    width: 95%;
+    height: 500px;
+
+    flex-wrap: wrap;
+}
+
+#galeria h2 {
+    font-size: 50px;
+    font-family: poppins-bold;
+    color: var(--branco);
+
+    margin-left: 30px;
+
+    display: inline-block; /*Permite animar a largura*/
+    overflow: hidden; /*esconde tudo que ultrapassar a largura do titulo*/
+    border-right: 0.8em solid var(--amarelo); /*cria uma borda na direita do titulo*/
+    white-space: nowrap;/*evita quebra de linha*/
+    animation: typingGaleria 2s steps(7, end) infinite alternate,
+    blinkCaret 0.8s step-end infinite;
+    /*
+        steps(25,end), a animação avança em 25 passos, cada letra surge de uma vez
+        end, garante que cada letra surja no final de cada passo
+
+        .8s é a duração do piscar, step-end faz a mudança de cor ser instant~ena no final do passo
+        infinite, repete para sempre
+    */
+}
+
+@keyframes typingGaleria {
+    from { width: 0; }   /* invisível */
+    to   { width: 8ch; } /* mostra todas as letras */
 }
