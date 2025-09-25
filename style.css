@@ -111,47 +111,43 @@ nav ul li:hover {
     height: 100%;
 }
 
-.banner-text {
+#banner-text {
+    display: flex;
+
     position: absolute;
-    top: 50%; /* coloca a borda superior do banner-text a 50% da altura do banner*/
-    left: 50%; /* coloca a borda esquerda do banner-text a 50% da largura do banner */
-    transform: translate(-50%, -50%); /* move o banner-text para a esquerda em 50% da largura e para cima em 50% da sua prórpria altura*/
-    color: var(--branco);
-    font-size: 40px;
-    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    z-index: 10;
+
 }
 
-/* Animação de "digitação" */
-.banner-text h1 {
+#banner-text h1 {
+    font-size: 80px;
+    font-family: poppins-bold;
+    color: var(--branco);
+
+    margin-left: 30px;
+
     display: inline-block; /*Permite animar a largura*/
     overflow: hidden; /*esconde tudo que ultrapassar a largura do titulo*/
     border-right: 0.8em solid var(--amarelo); /*cria uma borda na direita do titulo*/
     white-space: nowrap;/*evita quebra de linha*/
-    animation: typingTitle  10s steps(19, end), blinkCaret .8s step-end infinite alternate;
-    /*
-        steps(25,end), a animação avança em 25 passos, cada letra surge de uma vez
-        end, garante que cada letra surja no final de cada passo
-
-        .8s é a duração do piscar, step-end faz a mudança de cor ser instant~ena no final do passo
-        infinite, repete para sempre
-    */
-    font-family: "Poppins-Bold";
+    animation: escrever 5s steps(25, end) infinite alternate,
+    piscar 0.8s step-end infinite;
 }
 
-/*começa com nenhuma letra visível e termina com o titulo completo visivel*/
-@keyframes typingTitle {
-    0%   { width: 0 }        /* começa invisível */
-    40%  { width: 100% }     /* digita até o final */
-    60%  { width: 100% }     /* pausa com o texto completo */
-    100% { width: 0 }        /* apaga até sumir */
+@keyframes escrever {
+    from { width: 0 }
+    to { width: 100% }
 }
 
-/*no meio do ciclo a cor desaparece*/
-@keyframes blinkCaret {
-    50% { border-color: transparent }
+@keyframes piscar {
+    50% { border-right-color: transparent }
 }
 
-.dots {
+#dots {
     position: absolute;
     bottom: 15px;
     left: 50%;
@@ -290,20 +286,29 @@ span {
     width: 120px;
 }
 
+/*Galeria*/
+
 #galeria {
     width: 100%;
-    height: 500px;
+    height: 1100px;
 
     background-color: var(--preto);
 
-    padding: 10px;
+    gap: 30px;
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #galeria .container-grid {
-    width: 95%;
-    height: 500px;
+    width: 100%;
 
+    display: flex;
     flex-wrap: wrap;
+
+    gap: 10px;
 }
 
 #galeria h2 {
@@ -311,13 +316,14 @@ span {
     font-family: poppins-bold;
     color: var(--branco);
 
+    align-self: start;
     margin-left: 30px;
 
     display: inline-block; /*Permite animar a largura*/
     overflow: hidden; /*esconde tudo que ultrapassar a largura do titulo*/
     border-right: 0.8em solid var(--amarelo); /*cria uma borda na direita do titulo*/
     white-space: nowrap;/*evita quebra de linha*/
-    animation: typingGaleria 2s steps(7, end) infinite alternate,
+    animation: typingGaleria 2s steps(8, end)  ,
     blinkCaret 0.8s step-end infinite;
     /*
         steps(25,end), a animação avança em 25 passos, cada letra surge de uma vez
@@ -331,4 +337,116 @@ span {
 @keyframes typingGaleria {
     from { width: 0; }   /* invisível */
     to   { width: 8ch; } /* mostra todas as letras */
+}
+
+.card {
+    width: 480px;
+    height: 450px;
+
+    background-color: var(--amarelo);
+    border: none;
+    border-radius: 30px;
+
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.card img{
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border: none;
+    border-radius: 30px;
+    transition: height 0.5s ease; /* animação suave */
+}
+
+.conteudo-card {
+    width: 90%;
+
+    display: flex;
+    gap: 30px;
+    transition: all 0.5s ease;
+
+    height: 0;             /* começa escondido */
+    overflow: hidden;
+    opacity: 0;
+}
+
+.texto-card {
+    height: 200px;
+    width: 400px;
+
+    background-color: var(--preto);
+
+    border: none;
+    border-radius: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 10px 10px ;
+}
+
+.texto-card p {
+    font-family: poppins-bold;
+    color: var(--amarelo);
+
+    font-size: 20px;
+
+    text-align: start;
+    margin-left: 5px;
+}
+
+.botao-card img {
+    height: 20px;
+    width: 20px;
+}
+
+.botao-card {
+    width: 80px;
+    height: 200px;
+    background-color: var(--branco);
+
+    border: none;
+    border-radius: 50px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.botao-card p {
+    transform: rotate(270deg);
+
+    font-size: 20px;
+
+    font-family: poppins-medium;
+}
+
+.botao-card img {
+    filter: brightness(0%);
+    transform: rotate(90deg);
+
+    width: 60px;
+}
+
+.card:hover img {
+    height: 50%;
+    border-radius: 30px;
+}
+
+.card:hover .conteudo-card {
+    height: 50%;
+    opacity: 1;
+    padding: 10px;
 }
