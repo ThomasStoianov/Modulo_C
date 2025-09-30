@@ -290,7 +290,6 @@ span {
 
 #galeria {
     width: 100%;
-    height: 1100px;
 
     background-color: var(--preto);
 
@@ -319,11 +318,19 @@ span {
     align-self: start;
     margin-left: 30px;
 
-    display: inline-block; /*Permite animar a largura*/
+    cursor: pointer;
+
+}
+
+#galeria-titulo {
+    display: flex;
+}
+
+#galeria h2:hover {
     overflow: hidden; /*esconde tudo que ultrapassar a largura do titulo*/
     border-right: 0.8em solid var(--amarelo); /*cria uma borda na direita do titulo*/
     white-space: nowrap;/*evita quebra de linha*/
-    animation: typingGaleria 2s steps(8, end)  ,
+    animation: typingGaleria 2s steps(8, end) infinite ,
     blinkCaret 0.8s step-end infinite;
     /*
         steps(25,end), a animação avança em 25 passos, cada letra surge de uma vez
@@ -364,24 +371,24 @@ span {
 
     border: none;
     border-radius: 30px;
-    transition: height 0.5s ease; /* animação suave */
+    transition: height 0.5s ease;
 }
 
 .conteudo-card {
-    width: 90%;
+    width: 100%;
 
     display: flex;
-    gap: 30px;
+    justify-content: space-around;
     transition: all 0.5s ease;
 
-    height: 0;             /* começa escondido */
+    height: 0;
     overflow: hidden;
     opacity: 0;
 }
 
 .texto-card {
     height: 200px;
-    width: 400px;
+    width: 350px;
 
     background-color: var(--preto);
 
@@ -393,6 +400,8 @@ span {
     align-items: center;
 
     padding: 10px 10px ;
+
+    z-index: 99;
 }
 
 .texto-card p {
@@ -411,7 +420,7 @@ span {
 }
 
 .botao-card {
-    width: 80px;
+    width: 70px;
     height: 200px;
     background-color: var(--branco);
 
@@ -422,7 +431,8 @@ span {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+
+    cursor: pointer;
 }
 
 .botao-card p {
@@ -449,4 +459,144 @@ span {
     height: 50%;
     opacity: 1;
     padding: 10px;
+}
+
+.botao-card:hover {
+    z-index: 0;
+    box-shadow: 0px 0px 400px 200px rgba(255,255,255,0.7);
+}
+
+#servicos {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.servico-titulo{
+    display: inline-block;
+    cursor: pointer;
+}
+
+.servico-titulo h2 {
+    font-size: 50px;
+    font-family: poppins-bold, sans-serif;
+    color: var(--preto);
+
+    display: inline-block;
+    position: relative;
+
+    margin-top: 20px;
+}
+
+.servico-titulo:hover h2{
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 10px solid var(--amarelo);
+
+    animation: typing 2s steps(8, end) forwards, blink 0.7s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 7ch }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+
+#servicos .container-grid {
+    width: 100%;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 10px;
+    padding: 30px;
+}
+
+.card-servico {
+    width: 480px;
+    height: 610px;
+    background-color: var(--marrom-escuro);
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border: none;
+    border-radius: 30px;
+    overflow: hidden;
+
+    cursor: pointer;
+
+}
+
+.card-servico img {
+    height: 100%;
+
+    position: absolute;
+    transition: height 0.5s ease;
+}
+
+.conteudo-card-servico {
+    width: 90%;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+    opacity: 0;
+
+    height: auto;
+    transform: translateY(-100%);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    padding: 10px 10px;
+
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.conteudo-card-servico p {
+    font-family: poppins-medium;
+    color: var(--amarelo);
+    font-size: 16px;
+}
+
+.equipamentos {
+    width: 200px;
+    height: 50px;
+
+    border: solid 2px var(--branco);
+    border-radius: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 22px;
+    font-family: poppins-medium;
+    color: var(--branco);
+}
+
+.card-servico:hover img {
+    height: 50%;
+    border-radius: 30px;
+
+    position: absolute;
+    bottom: 0;
+}
+
+.card-servico:hover .conteudo-card-servico {
+    height: 50%;
+    opacity: 1;
+    padding: 10px;
+
+    transform: translateY(0);
 }
