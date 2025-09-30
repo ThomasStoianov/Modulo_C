@@ -591,6 +591,8 @@ span {
 
     position: absolute;
     bottom: 0;
+    width: 100%;
+    object-fit: cover;
 }
 
 .card-servico:hover .conteudo-card-servico {
