@@ -102,7 +102,7 @@ nav ul li:hover {
 /* Slides */
 .slide {
     width: 100%;
-    height: 667px; /* mesma altura do banner */
+    height: 667px;
     flex-shrink: 0;
 }
 
@@ -130,10 +130,10 @@ nav ul li:hover {
 
     margin-left: 30px;
 
-    display: inline-block; /*Permite animar a largura*/
-    overflow: hidden; /*esconde tudo que ultrapassar a largura do titulo*/
-    border-right: 0.8em solid var(--amarelo); /*cria uma borda na direita do titulo*/
-    white-space: nowrap;/*evita quebra de linha*/
+    display: inline-block;
+    overflow: hidden;
+    border-right: 0.8em solid var(--amarelo);
+    white-space: nowrap;
     animation: escrever 5s steps(25, end) infinite alternate,
     piscar 0.8s step-end infinite;
 }
@@ -310,35 +310,26 @@ span {
     gap: 10px;
 }
 
-#galeria h2 {
+.titulo-galeria {
+    width: 190px;
+
+    cursor: pointer;
+    align-self: start;
+}
+
+.titulo-galeria h2 {
     font-size: 50px;
     font-family: poppins-bold;
     color: var(--branco);
 
-    align-self: start;
-    margin-left: 30px;
-
-    cursor: pointer;
-
 }
 
-#galeria-titulo {
-    display: flex;
-}
-
-#galeria h2:hover {
-    overflow: hidden; /*esconde tudo que ultrapassar a largura do titulo*/
-    border-right: 0.8em solid var(--amarelo); /*cria uma borda na direita do titulo*/
-    white-space: nowrap;/*evita quebra de linha*/
-    animation: typingGaleria 2s steps(8, end) infinite ,
+.titulo-galeria:hover h2{
+    overflow: hidden;
+    border-right: 0.8em solid var(--amarelo);
+    white-space: nowrap;
+    animation: typingGaleria 2s steps(8, end) infinite,
     blinkCaret 0.8s step-end infinite;
-    /*
-        steps(25,end), a animação avança em 25 passos, cada letra surge de uma vez
-        end, garante que cada letra surja no final de cada passo
-
-        .8s é a duração do piscar, step-end faz a mudança de cor ser instant~ena no final do passo
-        infinite, repete para sempre
-    */
 }
 
 @keyframes typingGaleria {
@@ -466,6 +457,8 @@ span {
     box-shadow: 0px 0px 400px 200px rgba(255,255,255,0.7);
 }
 
+/* SERVIÇOS */
+
 #servicos {
     width: 100%;
 
@@ -476,17 +469,15 @@ span {
 }
 
 .servico-titulo{
-    display: inline-block;
     cursor: pointer;
+
+    width: 220px;
 }
 
 .servico-titulo h2 {
     font-size: 50px;
     font-family: poppins-bold, sans-serif;
     color: var(--preto);
-
-    display: inline-block;
-    position: relative;
 
     margin-top: 20px;
 }
@@ -496,10 +487,10 @@ span {
     white-space: nowrap;
     border-right: 10px solid var(--amarelo);
 
-    animation: typing 2s steps(8, end) forwards, blink 0.7s step-end infinite;
+    animation: typingServico 2s steps(8, end) forwards, blink 0.7s step-end infinite;
 }
 
-@keyframes typing {
+@keyframes typingServico {
     from { width: 0 }
     to { width: 7ch }
 }
@@ -507,7 +498,6 @@ span {
 @keyframes blink {
     50% { border-color: transparent; }
 }
-
 
 #servicos .container-grid {
     width: 100%;
@@ -585,6 +575,35 @@ span {
     color: var(--branco);
 }
 
+.botao-servico {
+    width: 75px;
+    height: 75px;
+
+    z-index: 1;
+
+    border: none;
+    border-radius: 20px;
+
+    background-color: var(--marrom-escuro);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+
+    transition: all 0.5s ease;
+
+    opacity: 0  ;
+}
+
+.botao-servico img {
+    width: 35px;
+    height: 35px;
+}
+
 .card-servico:hover img {
     height: 50%;
     border-radius: 30px;
@@ -602,3 +621,225 @@ span {
 
     transform: translateY(0);
 }
+
+.card-servico:hover .botao-servico {
+    opacity: 1;
+}
+
+.card-servico:hover .botao-servico img {
+    width: 30px;
+    height: 30px;
+}
+
+/* CONTATO */
+
+#contato {
+    width: 100%;
+    height: 512px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--preto);
+}
+
+#contato .container-grid {
+    width: 100%;
+
+    display: flex;
+}
+
+#contato-esquerda {
+    margin-left: 20px;
+
+    padding: 10px;
+
+    width: 750px;
+    height: 512px;
+
+    gap: 30px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#contato-esquerda h2 {
+    font-family: poppins-bold;
+    color: var(--branco);
+    font-size: 50px;
+
+    margin-top: 20px;
+
+    align-self: flex-start;
+    white-space: nowrap;
+
+}
+
+input::placeholder {
+    color: var(--marrom-escuro);
+    font-family: poppins-medium;
+}
+
+form #nome {
+    width: 350px;
+    height: 50px;
+    border: none;
+
+    padding: 10px;
+
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+form #email {
+    width: 350px;
+    height: 50px;
+    border: none;
+
+    padding: 10px;
+
+    font-size: 20px;
+}
+
+form #numero-celular {
+    height: 50px;
+    width: 715px;
+
+    margin-top: 10px;
+
+    padding: 10px;
+    font-size: 20px;
+}
+
+form #mensagem {
+    width: 715px;
+    height: 175px;
+
+    margin-top: 10px;
+
+    font-size: 20px;
+    padding: 10px;
+}
+
+form #botao-contato {
+    width: 200px;
+    height: 50px;
+
+    background-color: var(--marrom-escuro);
+
+    margin-top: 20px;
+    font-size: 20px;
+    color: var(--branco);
+
+    border: none;
+
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+    cursor: pointer;
+
+    margin-left: 250px;
+}
+
+form #botao-contato:hover {
+    color: var(--amarelo);
+}
+
+#contato-direita {
+    width: 750px;
+    height: 512px;
+}
+
+#contato-direita img {
+    height: 100%;
+    width: 100%;
+}
+
+footer {
+    width: 1500px;
+    height: 475px;
+
+    background-color: var(--marrom-escuro);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+
+footer .container-grid {
+    display: flex;
+
+    width: 95%;
+}
+
+#footer-esquerda {
+    width: 50%;
+
+    display: flex;
+    gap: 300px;
+}
+
+#navegacao {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+
+    gap: 20px;
+
+    width: 150px;
+}
+
+#navegacao h3 {
+    font-size: 30px;
+    color: var(--branco);
+    font-family: poppins-bold;
+}
+
+#nav-footer ul {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+#nav-footer ul li img {
+    opacity: 0;
+}
+
+#nav-footer ul li:hover img {
+    opacity: 1;
+}
+
+#social {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+
+    gap: 20px;
+}
+
+#social h3 {
+    font-size: 30px;
+    color: var(--branco);
+    font-family: poppins-bold;
+}
+
+.redes {
+    width: 150px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.redes p {
+    font-size: 20px;
+    color: var(--branco);
+
+    font-family: poppins-medium;
+}
+
