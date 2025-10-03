@@ -31,7 +31,7 @@ body {
 }
 
 header {
-    width: 100%;
+    width: 1500px;
     height: 70px;
 
     display: flex;
@@ -43,6 +43,8 @@ header {
     position: fixed;
     top: 0;
     z-index: 1000;
+
+    margin-left: 10px;
 }
 
 header .container-grid {
@@ -756,17 +758,29 @@ form #botao-contato:hover {
     width: 100%;
 }
 
+/* FOOTER */
+
 footer {
     width: 1500px;
     height: 475px;
 
-    background-color: var(--marrom-escuro);
+    background: var(--marrom-escuro);
 
     display: flex;
     justify-content: center;
     align-items: center;
 
     position: relative;
+
+    margin-left: 10px;
+
+    z-index: 1000;
+
+    background: linear-gradient(to bottom,
+    var(--marrom-escuro) 90%,
+    transparent 100%
+    );
+
 }
 
 footer .container-grid {
@@ -817,7 +831,7 @@ footer .container-grid {
     flex-direction: column;
     align-self: flex-start;
 
-    gap: 20px;
+    gap: 15px;
 }
 
 #social h3 {
@@ -834,6 +848,8 @@ footer .container-grid {
     align-items: center;
 
     gap: 10px;
+
+    cursor: pointer;
 }
 
 .redes p {
@@ -843,3 +859,35 @@ footer .container-grid {
     font-family: poppins-medium;
 }
 
+.imagem-rede {
+    opacity: 0;
+}
+
+.redes:hover img{
+    opacity: 1;
+}
+
+.redes p:hover {
+    color: var(--amarelo);
+}
+
+.imagem-footer {
+    position: absolute;
+    top: 100px;
+    right: 40px;
+}
+
+#imagem-footer {
+    width: 100%;
+
+    position: absolute;
+    bottom: -500px;
+
+    z-index: -1000;
+
+    opacity: 1;
+}
+
+#imagem-footer img {
+    width: 100%;
+}
